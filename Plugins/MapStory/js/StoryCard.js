@@ -177,6 +177,11 @@ var StoryCard = new Class({
         return this._description || '';
     },
 
+    getMediaElement(){
+
+        return null;
+
+    },
 
 
     setDescription: function(desc) {
