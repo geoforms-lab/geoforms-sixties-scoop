@@ -1673,6 +1673,7 @@ var StoryMapController = new Class({
 
         div.appendChild(new Element('button',{
             html:"View Profile",
+            "class": "profile-link",
             events:{
                 click:function(){
                        window.location='/story/'+user.getFirstStory().getId()
