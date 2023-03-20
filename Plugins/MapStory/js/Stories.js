@@ -1671,6 +1671,14 @@ var StoryMapController = new Class({
         }
         //}
 
+        div.appendChild(new Element('button',{
+            html:"View Profile",
+            events:{
+                click:function(){
+                    
+                }
+            }
+        }))
 
         new UIPopover(looking, {
             description: (user.isLookingForFamily() ? "Searching family" : "Not searching for family"),
