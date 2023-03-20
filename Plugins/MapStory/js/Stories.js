@@ -1675,7 +1675,7 @@ var StoryMapController = new Class({
             html:"View Profile",
             events:{
                 click:function(){
-                    
+                       window.location='/story/'+window.user.getFirstStory().getId()
                 }
             }
         }))
