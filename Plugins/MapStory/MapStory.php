@@ -90,6 +90,9 @@ class MapStory extends \core\extensions\Plugin implements
 			if(($userData['allowContact']==="true"||$userData['allowContact']===true)&&($userData['shareEmail']==="true"||$userData['shareEmail']===true)){
 				$userData["email"]=GetClient()->userMetadataFor($userId)['email'];
 			}
+			
+			$userData['id']=$userId;
+
 			$this->cacheUserMeta[$userId]=$userData;
 
 
