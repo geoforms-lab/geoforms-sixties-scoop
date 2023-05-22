@@ -135,11 +135,17 @@ var StoryUser = new Class({
 	},
 
 
+	getUserMedia:function(){
+
+		return this._userData.birthFamilyImages||'';
+
+	},
+
 	getImages:function(callback){
 
-		var content=this.getRealCardsSync().map(function(card){
+		var content=this.getUserMedia()+"\n"+(this.getRealCardsSync().map(function(card){
 			return card.getCardMedia();
-		}).join("\n");
+		}).join("\n"));
 
 
 		var parser=(new HTMLTagParser());
