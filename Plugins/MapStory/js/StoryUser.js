@@ -261,7 +261,11 @@ var StoryUser = new Class({
 	},
 
 
-	getMediaElement(){
+	getMediaElement(classList){
+
+		if(!classList){
+			classList=['icon-only', 'large-video', 'small-video']
+		}
 		
 		var el=new Element('span',{
 		    "class":"media-container empty"
@@ -301,25 +305,21 @@ var StoryUser = new Class({
 		            
 		        });
 		        
-		        el.parentNode.addClass('small-video icon-only');
+		        el.parentNode.addClass(''+classList[0]);
 		        el.appendChild(new Element('div',{"class":"toggle-display-mode", events:{click:function(e){
 		            
 		            e.stop();
 		            var p=el.parentNode;
-		            if(p.hasClass('small-video')){
+
+		            for(var i=0;i<classList.length;i++){
+		            	if(p.hasClass(classList[i])){
 		                
-		                if(p.hasClass('icon-only')){
-		                    
-		                    p.removeClass('small-video');
-		                    p.removeClass('icon-only');
-		                    return;
-		                    
-		                }
-		                
-		                p.addClass('icon-only');
-		                return;
+			                p.removeClass(classList[i]);
+			                p.addClass(classList[(i+1)%classList.length]);
+			                return;
+			            }
 		            }
-		            p.addClass('small-video')
+
 		        }}}))
 		        
 		    }
