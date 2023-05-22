@@ -306,6 +306,10 @@ var StoryUser = new Class({
 		        });
 		        
 		        el.parentNode.addClass(''+classList[0]);
+
+		        if(classList.length<=1){
+		        	return;
+		        }
 		        el.appendChild(new Element('div',{"class":"toggle-display-mode", events:{click:function(e){
 		            
 		            e.stop();
