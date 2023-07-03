@@ -24,7 +24,7 @@ class StoryFormatter {
 	public function forUser($id) {
 		$this->userId = $id;
 
-		$this->userProfile = (new \attributes\Record('profileAttributes'))->getValues($feature->getUserId(), "user");
+		$this->userProfile = (new \attributes\Record('profileAttributes'))->getValues($this->userId, "user");
 
 		return $this;
 	}
