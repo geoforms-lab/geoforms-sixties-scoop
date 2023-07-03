@@ -146,7 +146,15 @@ var StoryMapController = new Class({
 
     clearIconScale: function(marker) {
         var me = this;
-        if (marker.getIcon().indexOf("7pW_da6") > 0) {
+
+        var isBirth=false;
+        try{
+            isBirth=marker.getNamedValue('data').storyAttributes.isBirthStory===true||marker.getNamedValue('data').storyAttributes.isBirthStory==="true;"
+        }catch(e){
+
+        }
+
+        if (isBirth) {
             me.scaleIcon(marker, me.options.iconSizeSmallBirth);
             return;
         }
