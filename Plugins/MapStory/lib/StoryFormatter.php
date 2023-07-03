@@ -12,6 +12,9 @@ class StoryFormatter {
 	protected $hasAdoptionStory = false;
 	protected $userId=-1;
 
+
+	protected $enableAdoptionStories=false;
+
 	public function setCommitChanges($bool) {
 		$this->makeChanges = true;
 		return $this;
@@ -238,6 +241,11 @@ class StoryFormatter {
 	}
 
 	protected function shouldBeAdoptionStory($attributes, $index) {
+
+
+		if(!$this->enableAdoptionStories){
+			return false;
+		}
 
 		if($this->hasAdoptionStory){
 			return false;
