@@ -12,6 +12,8 @@ class StoryFormatter {
 	protected $hasAdoptionStory = false;
 	protected $userId=-1;
 
+	protected $userProfile;
+
 
 	protected $enableAdoptionStories=false;
 
@@ -21,8 +23,25 @@ class StoryFormatter {
 	}
 	public function forUser($id) {
 		$this->userId = $id;
+
+		$this->userProfile = (new \attributes\Record('profileAttributes'))->getValues($feature->getUserId(), "user");
+
 		return $this;
 	}
+
+	protected function hasAnyYoutubeVideo($list, $profile){
+
+		$media=array_map(function($item, $list){
+			return $item[$feature['attributes']['locationImages']]
+		});
+		$media[]=$profile['birthFamilyImages'];
+
+		$media=implode(' ', $media);
+
+		return strpos($media, 'youtube.com')!==false||strpos($media, 'youtu.be')!==false;
+
+	}
+
 	public function format($list) {
 
 		$hasRepatriationStory = false;
@@ -31,10 +50,16 @@ class StoryFormatter {
 
 		$list = $this->sort($list);
 
+
+		$hasAnyVideo=$this->hasAnyYoutubeVideo($list, $this->userProfile;
+
 		foreach ($list as $index => &$feature) {
 
 			$attributes = $feature['attributes'];
 			$attributesOriginal=$attributes;
+
+			$attributes['hasStoryVideos']=$hasAnyVideo;
+
 
 			if ($this->shouldBeBirthStory($attributes, $index)) {
 				$attributes = $this->setAsBirthStory($attributes, $index);
@@ -64,8 +89,6 @@ class StoryFormatter {
 				if(intval($attributes['storyUser'])!=$this->userId){
 					
 					$attributes['storyUser']=$this->userId;
-
-					
 				}
 				
 			}
