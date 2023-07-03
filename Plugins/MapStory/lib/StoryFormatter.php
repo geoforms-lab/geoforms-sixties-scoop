@@ -32,7 +32,7 @@ class StoryFormatter {
 	protected function hasAnyYoutubeVideo($list, $profile){
 
 		$media=array_map(function($item){
-			return $item[$feature['attributes']['locationImages']];
+			return $item['attributes']['locationImages'];
 		}, $list);
 		$media[]=$profile['birthFamilyImages'];
 
