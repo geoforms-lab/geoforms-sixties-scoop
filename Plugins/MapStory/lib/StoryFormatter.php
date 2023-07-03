@@ -23,7 +23,7 @@ class StoryFormatter {
 	}
 	public function forUser($id) {
 		$this->userId = $id;
-		GetWidget('Attributes');
+		GetPlugin('Attributes');
 		$this->userProfile = (new \attributes\Record('profileAttributes'))->getValues($this->userId, "user");
 
 		return $this;
