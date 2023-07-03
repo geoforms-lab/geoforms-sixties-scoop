@@ -51,7 +51,7 @@ class StoryFormatter {
 		$list = $this->sort($list);
 
 
-		$hasAnyVideo=$this->hasAnyYoutubeVideo($list, $this->userProfile;
+		$hasAnyVideo=$this->hasAnyYoutubeVideo($list, $this->userProfile);
 
 		foreach ($list as $index => &$feature) {
 
