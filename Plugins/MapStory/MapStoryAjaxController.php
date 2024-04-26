@@ -265,6 +265,8 @@ class MapStoryAjaxController extends core\AjaxController implements \core\extens
 				return intval(array_keys($stack)[0]);
 			}, $stacks));
 
+			$min=max($min, 1945);
+
 			$max=max(array_map(function($stack){
 				return intval(array_keys($stack)[count($stack)-1]);
 			}, $stacks));
@@ -326,7 +328,7 @@ class MapStoryAjaxController extends core\AjaxController implements \core\extens
 					return;
 				}
 
-				if(intval($year)<1930){
+				if(intval($year)<1945){
 					return;
 				}
 
