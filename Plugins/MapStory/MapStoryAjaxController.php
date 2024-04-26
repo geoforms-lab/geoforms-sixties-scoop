@@ -326,6 +326,10 @@ class MapStoryAjaxController extends core\AjaxController implements \core\extens
 					return;
 				}
 
+				if(intval($year)<1930){
+					return;
+				}
+
 				$minYr=min($minYr, $year);
 				$maxYr=max($maxYr, $year);
 
