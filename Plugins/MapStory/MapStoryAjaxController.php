@@ -262,6 +262,9 @@ class MapStoryAjaxController extends core\AjaxController implements \core\extens
 
 
 			$min=min(array_map(function($stack){
+				if(count($stack)==0){
+					return 1975;
+				}
 				return intval(array_keys($stack)[0]);
 			}, $stacks));
 
