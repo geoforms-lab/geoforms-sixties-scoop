@@ -268,7 +268,11 @@ class MapStoryAjaxController extends core\AjaxController implements \core\extens
 			$min=max($min, 1945);
 
 			$max=max(array_map(function($stack){
-				return intval(array_keys($stack)[count($stack)-1]);
+				$index=count($stack)-1;
+				if($index<0){
+					return 1945;
+				}
+				return intval(array_keys($stack)[$index]);
 			}, $stacks));
 
 
