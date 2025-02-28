@@ -620,7 +620,7 @@ var SankeyChart = (function() {
 					.enter().append("path")
 					.attr("class", "chord")
 					.style("stroke", "none")
-					.style("fill", function(d) {
+					.style("fill", function(d, i) {
 
 						return _cordColorMap(me.getNameAt(d.target.index), d, i);
 
@@ -802,7 +802,7 @@ var SankeyChart = (function() {
 
 		var chart = sankey.getElement();
 
-		var resultsLink = null;
+		var resultsLinkEl = null;
 		var reset = chart.appendChild(new Element('button', {
 			"class": "btn reset hidden",
 			html: "Reset",
@@ -844,7 +844,7 @@ var SankeyChart = (function() {
 
 
 			if (resultsLink && selection.length == 0) {
-				resultsLink.parentNode.removeChild(resultsLink);
+				resultsLinkEl.parentNode.removeChild(resultsLink);
 				resultsLink = null;
 				reset.addClass("hidden");
 				viewIndex.addClass("hidden");
@@ -856,8 +856,8 @@ var SankeyChart = (function() {
 			viewIndex.removeClass("hidden");
 			viewMap.removeClass("hidden");
 
-			if (!resultsLink) {
-				resultsLink = chart.appendChild(new Element('span', {
+			if (!resultsLinkEl) {
+				resultsLinkEl = chart.appendChild(new Element('span', {
 					"class": "markdown template-content"
 				}));
 			}
@@ -900,7 +900,7 @@ var SankeyChart = (function() {
 			mapLink='/map/filter-any' + toCodeStubs('/source-', sources) + toCodeStubs('/dest-', dests);
 			resultsLink='/story-index/filter-any' + toCodeStubs('/source-', sources) + toCodeStubs('/dest-', dests);
 
-			resultsLink.innerHTML = '<p>' + str.join("; ") + '<br/>' +
+			resultsLinkEl.innerHTML = '<p>' + str.join("; ") + '<br/>' +
 				'<a href="' + mapLink + '"><strong>View selection on the map</strong></a>' +
 				'<br/>' +
 				'<a href="' + resultsLink + '"><strong>List stories</strong></a></p>';
